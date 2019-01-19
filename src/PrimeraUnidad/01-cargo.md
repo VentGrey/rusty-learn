@@ -84,7 +84,7 @@ La saluda de la terminal nos debería mostrar una salida indicandonos si
 nuestro proyecto se pudo construir o si falló en algún punto:
 
 ```ignore
-   Compiling hola_cargo v0.1.0 (/home/FutureLab/Escritorio/hola_cargo)
+   Compiling hola_cargo v0.1.0 (/home/Rustaceans/Escritorio/hola_cargo)
     Finished dev [unoptimized + debuginfo] target(s) in 0.39s
 ```
 

@@ -1,13 +1,11 @@
 [book]
-authors = ["VentGrey, FutureLab"]
+authors = ["VentGrey"]
 multilingual = true
 src = "src"
 title = "Rusty Lab"
 
 [output.html]
 mathjax-support = true
-additional-css = ["rocket.css","theme/futurelab-edition.css"]
-additional-js = ["rocket.js"]
 
 [output.html.playpen]
 editable = true
@@ -18,11 +16,6 @@ limit-results = 30
 teaser-word-count = 30
 use-boolean-and = true
 expand = true
-
-[output.html.links]
-title = "GitHub Repo"
-icon = "fa-github"
-href = "https://github.com/futurelabmx/rusty-lab"
 
 [build]
 create-missing = true

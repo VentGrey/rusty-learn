@@ -90,7 +90,7 @@ variable, por ejemplo:
 
 ```rust,ignore
 let edad = 20;
-let nombre = "Future Lab";
+let nombre = "Rustaceans";
 let flotante = 3.1415;
 ```
 

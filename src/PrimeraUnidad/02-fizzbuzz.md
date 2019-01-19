@@ -28,13 +28,8 @@ simple sin necesidad de duplicar algo.
 Aun así no nos vamos a adentrar en la complejidad de la prueba y
 explicar los árboles de desiciones en este capítulo sería desviarnos
 del objetivo principal, existen diferentes formas de resolver un
-problema FizzBuzz en diferentes lenguajes, aquí puedes ver algunos ejemplos.
+problema FizzBuzz en diferentes lenguajes, aquí puedes ver un ejemplo.
 
-#### Python
-
-```python
-{{#include ../code/python/fizzbuzz.py}}
-```
 
 #### C (ANSI + Kernel Coding Style)
 ```c
@@ -67,13 +62,13 @@ Ahora entremos en el directorio creado por Cargo:
 `$ cd fizzbuzz`
 
 Vamos a editar el archivo `Cargo.toml` el cual se encuentra por defecto, en
-nuestro caso los programadores de Future Lab decidieron dejarlo de esta manera:
+nuestro caso decidimos dejarlo de esta manera:
 
 ```toml
 [package]
 name = "fizzbuzz"
 version = "0.1.0"
-authors = ["Future Lab <mxfuturelab@futuremail.com>"]
+authors = ["VentGrey <omarpurataf@gmail.com>"]
 edition = "2018"
 
 [dependencies]
@@ -91,7 +86,8 @@ Nuestro archivo `Cargo.toml` debería quedar así:
 [package]
 name = "fizzbuzz"
 version = "0.1.0"
-authors = ["Future Lab <mxfuturelab@futuremail.com>"]
+authors = ["VentGrey <omarpurataf@gmail.com>"]
+
 edition = "2018"
 
 [dependencies]
@@ -110,7 +106,6 @@ Esto debería de descargar y compilar `colored` y dejarlo listo para usar:
    Updating crates.io index
    Compiling lazy_static v1.2.0
    Compiling colored v1.6.1
-   Compiling fizzbuzz v0.1.0 (/home/futurelab/Escritorio/fizzbuzz)
     Finished dev [unoptimized + debuginfo] target(s) in 13.38s
 ```
 
@@ -288,7 +283,7 @@ hará de color cían.
 > del crate están listados todos los colores y estilos disponibles, anímate a
 > experimentar un poco).
 
-Veamos el código utilizando colores de Future Lab :D
+Veamos el código utilizando colores :D
 
 ```rust,ignore
 {{#include ../code/rust/colored-fizzbuzz.rs}}
@@ -531,6 +526,4 @@ que tengas muchas preguntas en este momento ¿Por qué las variables mutan? ¿Qu
 es un ciclo? ¿Cuantos tipos de dato existen? ¿Cuales son los principios de Rust?
 
 Bien, esta y tus preguntas las resolveremos en el siguiente capítulo del libro
-en el cual trataremos conceptos básicos de programación, si deseas el código
-fuente del programa lo puedes conseguir en el siguiente
-[enlace](https://github.com/futurelabmx/rusty-lab/blob/master/src/code/rust/finished-fizzbuzz.rs).
+en el cual trataremos conceptos básicos de programación. 
