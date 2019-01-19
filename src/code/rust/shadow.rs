@@ -1,0 +1,9 @@
+fn main() {
+    let cow = 20;
+
+    let cow = cow + 1;
+
+    let cow = cow * 2;
+
+    printf("El valor de la vaca es: {}", cow);
+}
