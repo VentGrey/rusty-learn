@@ -161,3 +161,40 @@ A comparación de las variables mutables en el ejemplo 1.1:
 ```c,ignore
 {{#include ../code/c/mutvars.c}}
 ```
+
+Podríamos decir que, cuando una declaración en Rust no contiene la palabra
+clave `mut` su declaración correspondiente en C contiene la palabra clave
+`const`. En otras palabras, en el lenguaje C, la manera mas sencilla de
+declaración definne una variable mutable y necesitarías de una palabra extra
+para obtener la inmutabilidad de la variable.
+
+### Variables mutables sin cambiar.
+
+Como lo dijimos antes, si tratamos de asignar un valor nuevo a una variable
+inmutable obtendremos un error de compilación. Por otra parte, no se le
+considera un error el declarar una variable como mutable y nunca asignarle un
+valor nuevo, afortunadamente el compilador de Rust es inteligente y nos
+reportará esta anomalía con una advertencia (puede variar dependiendo del
+compilador, las opciones y la versión):
+
+```rust
+{{#include ../code/rust/inmut-warn.rs}}
+```
+```ignore
+warning: variable does not need to be mutable
+ --> main.rs:13:2
+  |
+2 |     let mut numero = 42;
+  |         ----^
+  |         |
+  |         help: remove this `mut`
+  |
+  = note: #[warn(unused_mut)] on by default
+```
+
+La segunda línea de la advertencia nos indica la porción del código fuente que
+presenta una anomalía, en este caso en el archivo main.rs, comenzando desde
+la columna 13 de la fila 2. Debajo del mensaje anterior se nos muestra la línea
+de código anómala y se nos presenta una sugerencia para mejorar nuestro código.
+
+> rustc no es el único que nos puede ayudar.
