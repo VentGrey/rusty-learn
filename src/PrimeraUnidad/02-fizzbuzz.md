@@ -68,7 +68,7 @@ nuestro caso decidimos dejarlo de esta manera:
 [package]
 name = "fizzbuzz"
 version = "0.1.0"
-authors = ["VentGrey <omarpurataf@gmail.com>"]
+authors = ["VentGrey <vent@gmail.com>"]
 edition = "2018"
 
 [dependencies]
@@ -86,7 +86,7 @@ Nuestro archivo `Cargo.toml` debería quedar así:
 [package]
 name = "fizzbuzz"
 version = "0.1.0"
-authors = ["VentGrey <omarpurataf@gmail.com>"]
+authors = ["VentGrey <vent@gmail.com>"]
 
 edition = "2018"
 
