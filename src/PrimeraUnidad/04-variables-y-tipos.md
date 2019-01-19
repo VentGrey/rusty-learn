@@ -232,6 +232,24 @@ y cuando se encuentren dentro del alcance donde fueron declaradas. Las
 constantes tienen su utilidad y son resultan eficientes para el mantenimiento
 del código.
 
+## El poderoso guión bajo
+
+Muchas veces pasa, declaramos una variable, le asignamos un valor y nunca la
+volvemos a utilizar en todo nuestro programa pero ¿qué pasa si necesitamos
+inicializar una variable y nunca utilizar su valor? El compilador detecta esto
+y nos arroja una advertencia. Si deseamos suprimirla simplemente podemos
+declarar nuestras variables con un guión bajo antes del identificador
+de la siguiente manera:
+
+```rust,ignore
+# fn main() {
+    let _gatos = 30;
+# }
+```
+
+El guión bajo (Conocido como *underscore* en inglés) `_` es utilizable en
+cualquier parte del identificador, pero cuando se encuentra al inicio de este
+tiene el efecto de silenciar este tipo de advertencias del compilador.
 
 ## Sombreado y alcance
 
@@ -239,3 +257,31 @@ Todas las variables definidas en cualquier programa `.rs` tienen un alcance
 local, limitado por las llaves `{}` de las funciones o métodos en las que son
 declaradas, una vez salen de la llave `}` estas salen del alcance y la memoria
 que se encontraba en uso es liberada.
+
+En pocas palabras, una variable definida en un bloque solo será reconocida
+dentro del mismo. Una variable en un bloque también puede repetir su
+identificador en un bloque interno (sombreado).
+
+Asi mismo, una variable que no posee el atributo `mut` puede cambiar su
+valor mediante algo llamado *"sombreado"*. En pocas palabras estamos declarando
+una variable con el mismo nombre que la anterior, podemos lograr esto al
+utilizar un nombre utilizado previamente por una variable y la palabra reservada
+`let`:
+
+```rust,ignore
+{{#include ../code/rust/shadow.rs}}
+```
+
+El siguiente programa primero crea una variable llamada `cow` (vaca) y le asigna
+el variable de `20`. Después toma a `cow` otra vez y le agrega `1` al valor
+total mediante el sombreado y así sucesivamente durante las operaciones
+siguientes.
+
+Sombrear variables es diferente a marcarlas como `mut`-ables. Al volver a
+utilizar la palabra clave `let` podemos hacer un par de transformaciones y
+mantener la variable inmutable una vez completemos dichas transformaciones.
+
+Otra diferencia con respecto al uso de `mut` es que al *sombrear* una variable
+técnicamente estamos creando una nueva variable con el mismo identificador, lo
+que nos ayuda a cambiar el tipo de la variable en un futuro mientras esta esté
+dentro del alcance.
