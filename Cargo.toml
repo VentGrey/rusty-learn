@@ -35,7 +35,12 @@ name = "mutvars"
 path = "code/rust/mutvars.rs"
 
 [[bin]]
-name ="inmut_warns"
+name = "inmut_warns"
 path = "code/rust/inmut-warns.rs"
+
+[[bin]]
+name = "shadowing"
+path = "code/rust/shadow.rs"
+
 [dependencies]
 colored = "1.7.0"
