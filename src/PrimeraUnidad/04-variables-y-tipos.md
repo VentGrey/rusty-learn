@@ -1,4 +1,4 @@
-# Variables y tipos
+# Variables
 
 Por muy gracioso que suene, una de las primeras cosas que los programadores
 buscan al aprender un nuevo lenguaje es la manera que tiene de declarar
@@ -177,9 +177,10 @@ valor nuevo, afortunadamente el compilador de Rust es inteligente y nos
 reportará esta anomalía con una advertencia (puede variar dependiendo del
 compilador, las opciones y la versión):
 
-```rust
+```rust,ignore
 {{#include ../code/rust/inmut-warn.rs}}
 ```
+
 ```ignore
 warning: variable does not need to be mutable
  --> main.rs:13:2
@@ -197,4 +198,44 @@ presenta una anomalía, en este caso en el archivo main.rs, comenzando desde
 la columna 13 de la fila 2. Debajo del mensaje anterior se nos muestra la línea
 de código anómala y se nos presenta una sugerencia para mejorar nuestro código.
 
-> rustc no es el único que nos puede ayudar.
+> rustc no es el único que nos puede ayudar. Existe una herramiente llamada
+> [clippy](https://github.com/rust-lang/rust-clippy) la cual contiene varias
+> linternas para ayudarnos a encontrar varios errores comunes en nuestro código
+> fuente en Rust.
+
+## Variables inmutables != Constantes
+
+Seguramente lo habrás pensado, si las variables que declaramos por defecto no
+pueden mutar ¿eso no las convierte en constantes?
+
+Las constantes, al igual que las variables inmutables, no tienen permitido
+cambiar sus contenidos y están ligadas a un identificador, pero existen
+algunas diferencias entre las variables inmutables y las constantes.
+
+La primera y mas importante, las variables inmutables tienen posibilidad de
+cambio mediante algo llamado *"Sombreado"* (El cual exploraremos mas tarde), las
+constantes por su lado **JAMÁS** cambiarán una vez sean declaradas.
+
+Para declarar una constante se utiliza la palabra reservada `const` en lugar
+de la palabra `let`, además una constante tiene que estar *"tipada"* SIEMPRE.
+
+He aquí un ejemplo del uso de constantes, el estílo de código de Rust nos indica
+que los identificadores de las constantes deberán ser siempre mayúsculas y
+guiones bajos entre cada palabra:
+
+```rust,ignore
+const PERROS_VOLADORES: i32 = 200;
+```
+
+Las constantes son válidas durante todo el ciclo de vida del programa, siempre
+y cuando se encuentren dentro del alcance donde fueron declaradas. Las
+constantes tienen su utilidad y son resultan eficientes para el mantenimiento
+del código.
+
+
+## Sombreado y alcance
+
+Todas las variables definidas en cualquier programa `.rs` tienen un alcance
+local, limitado por las llaves `{}` de las funciones o métodos en las que son
+declaradas, una vez salen de la llave `}` estas salen del alcance y la memoria
+que se encontraba en uso es liberada.
