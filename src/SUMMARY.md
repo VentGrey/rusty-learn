@@ -11,5 +11,6 @@
 - [FizzRust](PrimeraUnidad/02-fizzbuzz.md)
 - [Aprendiendo las bases](PrimeraUnidad/03-bases.md)
   - [Variables](PrimeraUnidad/04-variables-y-tipos.md)
+  - [Tipos de datos](PrimeraUnidad/04-tipos-de-datos.md)
 --------------------------------------------------------------------------------
 [Contribuidores](contribs.md)
