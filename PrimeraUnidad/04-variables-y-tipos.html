@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Variables - Rusty Lab</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../Introduccion/00-intro.html"><strong aria-hidden="true">1.</strong> Introducción</a></li><li><a href="../Introduccion/01-antes-de-empezar.html"><strong aria-hidden="true">2.</strong> Antes de empezar</a></li><li><ol class="section"><li><a href="../Introduccion/01-windows.html"><strong aria-hidden="true">2.1.</strong> Instalación en Microsoft Windows</a></li><li><a href="../Introduccion/01-macos.html"><strong aria-hidden="true">2.2.</strong> Instalación en Mac OS</a></li><li><a href="../Introduccion/01-linux.html"><strong aria-hidden="true">2.3.</strong> Instalación en Gnu/Linux</a></li><li><a href="../Introduccion/02-ide.html"><strong aria-hidden="true">2.4.</strong> ¿IDE o Editor de Texto?</a></li></ol></li><li><a href="../PrimeraUnidad/00-hola-rust.html"><strong aria-hidden="true">3.</strong> ¡Hola Rust!</a></li><li><a href="../PrimeraUnidad/01-cargo.html"><strong aria-hidden="true">4.</strong> ¿Cargo?</a></li><li><a href="../PrimeraUnidad/02-fizzbuzz.html"><strong aria-hidden="true">5.</strong> FizzRust</a></li><li><a href="../PrimeraUnidad/03-bases.html"><strong aria-hidden="true">6.</strong> Aprendiendo las bases</a></li><li><ol class="section"><li><a href="../PrimeraUnidad/04-variables-y-tipos.html" class="active"><strong aria-hidden="true">6.1.</strong> Variables</a></li><li><a href="../PrimeraUnidad/04-tipos-de-datos.html"><strong aria-hidden="true">6.2.</strong> Tipos de datos</a></li><li class="spacer"></li></ol></li><li><a href="../contribs.html">Contribuidores</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Rusty Lab</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#variables" id="variables"><h1>Variables</h1></a>
+<p>Por muy gracioso que suene, una de las primeras cosas que los programadores
+buscan al aprender un nuevo lenguaje es la manera que tiene de declarar
+variables y sus respectivos tipos, en este capítulo aprenderemos a declarar
+variables y a manejar diferentes tipos de datos en Rust.</p>
+<p>Así mismo discutiremos los tipos primitivos, cuando <em>&quot;tipear&quot;</em> una variable o
+no, el alcance de las variables y otros tratos especiales que posee rust como la
+<em>inmutabilidad</em>.</p>
+<a class="header" href="#comentarios" id="comentarios"><h2>Comentarios</h2></a>
+<p>En un escenario ideal el código debería auto-documentarse por medio de las
+buenas prácticas como los nombres descriptivos de variables, un estilo de
+código limpio y una estructura impecable, aun así, existen casos donde se
+necesita de un elemento extra para explicar o justificar la estructura de una
+o varias partes de nuestro programa.</p>
+<p>Rust sigue la forma de comentar de nuestro querido lenguaje C, por lo tanto
+tenemos dos formas de comentar líneas de código:</p>
+<ul>
+<li><code>//</code> Comentarios con doble barra para una sola línea.</li>
+</ul>
+<pre><code class="language-rust ignore">// Esto es un comentario y no se compilará
+</code></pre>
+<ul>
+<li><code>/* */</code> Comentarios del tipo bloque para múltiples líneas.</li>
+</ul>
+<pre><code class="language-rust ignore">/*
+Esto
+es
+un
+comentario
+largo
+*/
+</code></pre>
+<p>El estilo recomendado por la guía oficial de Rust es utilizar el comentario de
+doble barra, incluso para varias líneas en caso de necesitar explicar tu código.</p>
+<p>Procura utilizar el comentario multilínea solamente para comentar código.</p>
+<blockquote>
+<p>rust-doc también ofrece comentarios para documentación utilizando tres barras
+<code>///</code>, estos son útiles en proyectos grandes que necesitarán de algún tipo de
+documentación oficial además, en estos comentarios podemos utilizar sintáxis
+markdown para mejorar la legibilidad de nuestra documentación.</p>
+</blockquote>
+<a class="header" href="#asignación-de-variables" id="asignación-de-variables"><h2>Asignación de variables</h2></a>
+<p>Hasta ahora hemos visto varios tipos de valores, hemos visto cadenas, números
+enteros, etc. Pero no debemos de confundir los valores con los objetos ni las
+variables.</p>
+<p>Tendremos que dejar algo muy claro desde el principio, la asignación de
+variables es diferente en Rust si lo comparamos con otros lenguajes, esto es
+para preservar 3 carácteristicas que hacen especial al lenguaje:</p>
+<ul>
+<li><strong>Seguridad</strong></li>
+<li><strong>Eficiencia</strong></li>
+<li><strong>Concisión</strong></li>
+</ul>
+<p>A diferencia de otros lenguajes (como <em>JavaScript</em> o <em>Ruby</em>), Rust necesita un
+poco más de planeación al escribir código pues necesitarás dictar los tipos de
+los parámetros de tus funciones, de sus valores de retorno y de tus variables.</p>
+<p>Por lo tanto Rust es un lenguaje <em>&quot;Estáticamente tipado&quot;</em> o de
+<em>&quot;Tipado estático&quot;</em> lo que significa que el compilador deberá conocer el tipo
+de los datos antes del tiempo de ejecución, este método que viene de lenguajes
+veteranos como C o C++ ha sido rediseñado en Rust, pues el compilador revisará
+que todos los caminos posibles de ejecución usarán valores solo de manera consistente con sus tipos. Esto permite que Rust detecte muchos errores de programación antes de tiempo, y es crucial para garantizar de seguridad de Rust.</p>
+<p>Por lo tanto, en lugar de utilizar un intérprete o un compilador en tiempo real
+como lo harían lenguajes como <em>Julia</em> o <em>LuaJIT (Lua Just In Time Compiler)</em>,
+Rust fue diseñado para utilizar algo llamado <em>&quot;Compilación anticipada&quot;</em> es decir
+una traducción completa de todo tu programa a código máquina antes de que
+comience a ejecutarse, por ello los tipos de datos que Rust utilizar ayudan al
+compilador a elegir una representación adecuada en el bajo nivel.</p>
+<p>Cuando Rust compila el código fuente el ejecutable resultante solo contiene
+objetos que tengan una dirección de memoria y un valor. Dichos objetos no poseen
+un nombre definido, pero estos mismos objetos necesitan de un identificador en
+el código fuente para poder referenciarlos más tarde.</p>
+<p>En Rust necesitaremos de la palabra reservada <code>let</code> para declarar cualquier
+variable, por ejemplo:</p>
+<pre><code class="language-rust ignore">let edad = 20;
+let nombre = &quot;Rustaceans&quot;;
+let flotante = 3.1415;
+</code></pre>
+<a class="header" href="#variables-inmutables" id="variables-inmutables"><h3>Variables ¿inmutables?</h3></a>
+<p>Tus ojos no te están engañando, las variables en Rust son inmutables por
+defecto, esto se hace para preservar la seguridad en Rust, pero esto no es el
+fin del mundo, Rust nos ofrece la opción de mutar las variables a nuestro gusto
+siempre y cuando cumplamos con ciertas reglas impuestas por el compilador.</p>
+<blockquote>
+<p>Rust no es el primer lenguaje en hacer esto, muchos lenguajes funcionales
+poseen esta característica. De hecho en los lenguajes 100% funcionales la
+mutabilidad de las variables no está permitida.</p>
+</blockquote>
+<p>Veamos este pequeño ejemplo para ilustrar lo anterior:</p>
+<p><span><b>Ejemplo 1.0</b></span></p>
+<pre><code class="language-rust ignore">fn main() {
+    let edad = 10;
+
+    edad = 5;
+}
+</code></pre>
+<p>El siguiente código producirá un error de compilación específicamente este:</p>
+<pre><code class="language-ignore">error[E0384]: cannot assign twice to immutable variable `edad`
+ --&gt; src/main.rs:4:5
+  |
+2 |     let edad = 10;
+  |         ---- first assignment to `edad`
+3 | 
+4 |     edad = 5;
+  |     ^^^^^^^^ cannot assign twice to immutable variable
+</code></pre>
+<p>Rust aplica la sabiduría que muchos programadores necesitan:
+<em>&quot;Muchos errores surgen de cambios involuntarios o incorrectos de las</em>
+<em>variables, así que no permiré que el código cambie cualquier valor a menos que</em>
+<em>lo haya permitido explícitamente.&quot;</em></p>
+<p>Si deseamos una variable mutable necesitaríamos indicarle a Rust específicamente
+que la variable es mutable, si deseamos hacer algo así necesitamos hacer lo
+siguiente:</p>
+<p><span><b>Ejemplo 1.1</b></span></p>
+<pre><code class="language-rust ignore">fn main() {
+    let mut edad = 20;
+    println!(&quot;Tienes {} años&quot;, edad);
+
+    edad = 21;
+    println!(&quot;Ahora tienes {} años&quot;, edad);
+}
+</code></pre>
+<p>Esto debería imprimir el siguiente mensaje en pantalla:</p>
+<pre><code class="language-ignore">Tienes 20 años
+Ahora tienes 21 años
+</code></pre>
+<p>Para darnos una mejor idea de como funciona la mutabilidad de las variables
+aquí tenemos un ejemplo del código 1.0 escrito en C:</p>
+<pre><code class="language-c ignore">#include &lt;stdio.h&gt;
+
+int main(int argc, char const *argv[])
+{
+        int const edad = 10;
+        edad = 5;
+
+        return 0;
+}
+
+</code></pre>
+<blockquote>
+<p>No intentes compilarlo, no funcionará.</p>
+</blockquote>
+<p>A comparación de las variables mutables en el ejemplo 1.1:</p>
+<pre><code class="language-c ignore">#include &lt;stdio.h&gt;
+
+int main(int argc, char const *argv[])
+{
+        int edad = 20;
+        //C no permite la ñ
+        printf(&quot;Tienes %d anios\n&quot;, edad);
+
+        edad = 21;
+        printf(&quot;Ahora tienes %d anios\n&quot;, edad);
+        return 0;
+}
+
+</code></pre>
+<p>Podríamos decir que, cuando una declaración en Rust no contiene la palabra
+clave <code>mut</code> su declaración correspondiente en C contiene la palabra clave
+<code>const</code>. En otras palabras, en el lenguaje C, la manera mas sencilla de
+declaración definne una variable mutable y necesitarías de una palabra extra
+para obtener la inmutabilidad de la variable.</p>
+<a class="header" href="#variables-mutables-sin-cambiar" id="variables-mutables-sin-cambiar"><h3>Variables mutables sin cambiar.</h3></a>
+<p>Como lo dijimos antes, si tratamos de asignar un valor nuevo a una variable
+inmutable obtendremos un error de compilación. Por otra parte, no se le
+considera un error el declarar una variable como mutable y nunca asignarle un
+valor nuevo, afortunadamente el compilador de Rust es inteligente y nos
+reportará esta anomalía con una advertencia (puede variar dependiendo del
+compilador, las opciones y la versión):</p>
+<pre><code class="language-rust ignore">fn main() {
+    let mut numero = 42;
+    println!(&quot;Número: {}&quot;, numero);
+}
+</code></pre>
+<pre><code class="language-ignore">warning: variable does not need to be mutable
+ --&gt; main.rs:13:2
+  |
+2 |     let mut numero = 42;
+  |         ----^
+  |         |
+  |         help: remove this `mut`
+  |
+  = note: #[warn(unused_mut)] on by default
+</code></pre>
+<p>La segunda línea de la advertencia nos indica la porción del código fuente que
+presenta una anomalía, en este caso en el archivo main.rs, comenzando desde
+la columna 13 de la fila 2. Debajo del mensaje anterior se nos muestra la línea
+de código anómala y se nos presenta una sugerencia para mejorar nuestro código.</p>
+<blockquote>
+<p>rustc no es el único que nos puede ayudar. Existe una herramiente llamada
+<a href="https://github.com/rust-lang/rust-clippy">clippy</a> la cual contiene varias
+linternas para ayudarnos a encontrar varios errores comunes en nuestro código
+fuente en Rust.</p>
+</blockquote>
+<a class="header" href="#variables-inmutables--constantes" id="variables-inmutables--constantes"><h2>Variables inmutables != Constantes</h2></a>
+<p>Seguramente lo habrás pensado, si las variables que declaramos por defecto no
+pueden mutar ¿eso no las convierte en constantes?</p>
+<p>Las constantes, al igual que las variables inmutables, no tienen permitido
+cambiar sus contenidos y están ligadas a un identificador, pero existen
+algunas diferencias entre las variables inmutables y las constantes.</p>
+<p>La primera y mas importante, las variables inmutables tienen posibilidad de
+cambio mediante algo llamado <em>&quot;Sombreado&quot;</em> (El cual exploraremos mas tarde), las
+constantes por su lado <strong>JAMÁS</strong> cambiarán una vez sean declaradas.</p>
+<p>Para declarar una constante se utiliza la palabra reservada <code>const</code> en lugar
+de la palabra <code>let</code>, además una constante tiene que estar <em>&quot;tipada&quot;</em> SIEMPRE.</p>
+<p>He aquí un ejemplo del uso de constantes, el estílo de código de Rust nos indica
+que los identificadores de las constantes deberán ser siempre mayúsculas y
+guiones bajos entre cada palabra:</p>
+<pre><code class="language-rust ignore">const PERROS_VOLADORES: i32 = 200;
+</code></pre>
+<p>Las constantes son válidas durante todo el ciclo de vida del programa, siempre
+y cuando se encuentren dentro del alcance donde fueron declaradas. Las
+constantes tienen su utilidad y son resultan eficientes para el mantenimiento
+del código.</p>
+<a class="header" href="#el-poderoso-guión-bajo" id="el-poderoso-guión-bajo"><h2>El poderoso guión bajo</h2></a>
+<p>Muchas veces pasa, declaramos una variable, le asignamos un valor y nunca la
+volvemos a utilizar en todo nuestro programa pero ¿qué pasa si necesitamos
+inicializar una variable y nunca utilizar su valor? El compilador detecta esto
+y nos arroja una advertencia. Si deseamos suprimirla simplemente podemos
+declarar nuestras variables con un guión bajo antes del identificador
+de la siguiente manera:</p>
+<pre><code class="language-rust ignore"># fn main() {
+    let _gatos = 30;
+# }
+</code></pre>
+<p>El guión bajo (Conocido como <em>underscore</em> en inglés) <code>_</code> es utilizable en
+cualquier parte del identificador, pero cuando se encuentra al inicio de este
+tiene el efecto de silenciar este tipo de advertencias del compilador.</p>
+<a class="header" href="#sombreado-y-alcance" id="sombreado-y-alcance"><h2>Sombreado y alcance</h2></a>
+<p>Todas las variables definidas en cualquier programa <code>.rs</code> tienen un alcance
+local, limitado por las llaves <code>{}</code> de las funciones o métodos en las que son
+declaradas, una vez salen de la llave <code>}</code> estas salen del alcance y la memoria
+que se encontraba en uso es liberada.</p>
+<p>En pocas palabras, una variable definida en un bloque solo será reconocida
+dentro del mismo. Una variable en un bloque también puede repetir su
+identificador en un bloque interno (sombreado).</p>
+<p>Asi mismo, una variable que no posee el atributo <code>mut</code> puede cambiar su
+valor mediante algo llamado <em>&quot;sombreado&quot;</em>. En pocas palabras estamos declarando
+una variable con el mismo nombre que la anterior, podemos lograr esto al
+utilizar un nombre utilizado previamente por una variable y la palabra reservada
+<code>let</code>:</p>
+<pre><code class="language-rust ignore">fn main() {
+    let cow = 20;
+
+    let cow = cow + 1;
+
+    let cow = cow - 3;
+
+    let cow = cow * 9;
+
+    let cow = cow / 2;
+
+    printf(&quot;El valor de la vaca es: {}&quot;, cow);
+}
+</code></pre>
+<p>El siguiente programa primero crea una variable llamada <code>cow</code> (vaca) y le asigna
+el variable de <code>20</code>. Después toma a <code>cow</code> otra vez y le agrega <code>1</code> al valor
+total mediante el sombreado y así sucesivamente durante las operaciones
+siguientes.</p>
+<p>Sombrear variables es diferente a marcarlas como <code>mut</code>-ables. Al volver a
+utilizar la palabra clave <code>let</code> podemos hacer un par de transformaciones y
+mantener la variable inmutable una vez completemos dichas transformaciones.</p>
+<p>Otra diferencia con respecto al uso de <code>mut</code> es que al <em>sombrear</em> una variable
+técnicamente estamos creando una nueva variable con el mismo identificador, lo
+que nos ayuda a cambiar el tipo de la variable en un futuro mientras esta esté
+dentro del alcance.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../PrimeraUnidad/03-bases.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../PrimeraUnidad/04-tipos-de-datos.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../PrimeraUnidad/03-bases.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../PrimeraUnidad/04-tipos-de-datos.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
