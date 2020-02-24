@@ -43,4 +43,4 @@ name = "shadowing"
 path = "code/rust/shadow.rs"
 
 [dependencies]
-colored = "1.7.0"
+colored = "1.9.3"
